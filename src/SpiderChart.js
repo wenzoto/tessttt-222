@@ -2,30 +2,19 @@ import React, { Component } from "react";
 import * as d3 from "d3";
 import { RadarChart } from "./RadarChart";
 
-class SpiderChart extends Component {
-  state = {
-    loaded: true,
-    HEIGHT: 500,
-    maxValue: 0.6,
-    levels: 6,
-    colorscale: d3.scaleOrdinal(d3.schemeCategory10)
-  };
+const colorscale = d3.scaleOrdinal(d3.schemeCategory10)
+export class SpiderChart extends Component {
+  // state = {
+  //   colorscale: d3.scaleOrdinal(d3.schemeCategory10)
+  // };
 
   componentDidMount() {
-    this.setState(
-      {
-        WIDTH: document.querySelector("#container-1").getBoundingClientRect()
-          .width
-      },
-      () => {
-        let canvas = this.setCanvas();
-        RadarChart.draw("#container-1", this.props.data);
-        this.setLegend(
-          this.props.title,
-          this.props.legendOptions,
-          this.state.colorscale
-        );
-      }
+    this.setCanvas();
+    RadarChart.draw("#container-1", this.props.data);
+    this.setLegend(
+        this.props.title,
+        this.props.legendOptions,
+        colorscale
     );
   }
 
@@ -36,8 +25,8 @@ class SpiderChart extends Component {
       .append("svg")
       .style("background-color", "#354560")
       .style("color", "#FFFFFF") //With this we've got the color of the axis too
-      .attr("height", this.state.HEIGHT)
-      .attr("width", this.state.WIDTH);
+      .attr("height", 500)
+      .attr("width", 1200);
 
     return svg;
   }
@@ -47,7 +36,7 @@ class SpiderChart extends Component {
       .select("#legend")
       .append("svg")
       //.style("background-color", "#354560")
-      .attr("width", this.state.WIDTH)
+      .attr("width", 1200)
       .attr("height", 100);
 
     //Create the title for the legend
@@ -115,5 +104,3 @@ class SpiderChart extends Component {
     );
   }
 }
-
-module.exports.SpiderChart = SpiderChart;

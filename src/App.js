@@ -1,5 +1,5 @@
 import React from "react";
-import { SpiderChart } from "./SpiderChart";
+import { SpiderChartF } from "./SpiderChartF";
 
 let data = [
   [
@@ -8,10 +8,7 @@ let data = [
     { axis: "T2P%", value: 45.32 },
     { axis: "T3P%", value: 33.45 },
     { axis: "TL%", value: 78.34 },
-    {
-      axis: "eTC%",
-      value: 56.34
-    },
+    { axis: "eTC%", value: 56.34 },
     { axis: "TS%", value: 65.34 }
   ],
   [
@@ -20,21 +17,28 @@ let data = [
     { axis: "T2P%", value: 42.92 },
     { axis: "T3P%", value: 38.35 },
     { axis: "TL%", value: 72.34 },
-    {
-      axis: "eTC%",
-      value: 52.34
-    },
+    { axis: "eTC%", value: 52.34 },
     { axis: "TS%", value: 60.34 }
   ]
 ];
 
 export default function App() {
   return (
-    <SpiderChart
-      language="es"
-      data={data}
-      title="COMPARATIVA JUGADORA - RESTO DE LA LIGA"
-      legendOptions={["Jugadora", "Liga"]}
-    />
+      <>
+
+        <SpiderChartF
+            language="es"
+            data={data}
+            title="COMPARATIVA JUGADORA - RESTO DE LA LIGA"
+            legendOptions={["Jugadora", "Liga"]}
+        />
+
+    {/*<SpiderChart*/}
+    {/*  language="es"*/}
+    {/*  data={data}*/}
+    {/*  title="COMPARATIVA JUGADORA - RESTO DE LA LIGA"*/}
+    {/*  legendOptions={["Jugadora", "Liga"]}*/}
+    {/*/>*/}
+      </>
   );
 }

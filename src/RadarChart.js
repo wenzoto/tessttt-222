@@ -2,8 +2,8 @@ import * as d3 from "d3";
 
 let dataValues = [];
 
-const RadarChart = {
-  draw: function(id, d, options) {
+export const RadarChart = {
+  draw: function(id, d) {
     var cfg = {
       radius: 5,
       w: 400,
@@ -15,21 +15,12 @@ const RadarChart = {
       radians: 2 * Math.PI,
       opacityArea: 0.5,
       ToRight: 5,
-      //TranslateX: 80,
       TranslateX: 175,
       TranslateY: 30,
-      //ExtraWidthX: 2500,
       ExtraWidthY: 100,
       color: d3.scaleOrdinal(d3.schemeCategory10)
     };
 
-    if ("undefined" !== typeof options) {
-      for (var i in options) {
-        if ("undefined" !== typeof options[i]) {
-          cfg[i] = options[i];
-        }
-      }
-    }
     cfg.maxValue = Math.max(
       cfg.maxValue,
       d3.max(d, function(i) {
@@ -40,12 +31,18 @@ const RadarChart = {
         );
       })
     );
+    
+    console.log('---------cfg.maxValue---------', cfg.maxValue)
+
     var allAxis = d[0].map(function(i, j) {
       return i.axis;
     });
+
     var total = allAxis.length;
     var radius = cfg.factor * Math.min(cfg.w / 2, cfg.h / 2);
     var Format = d3.format(".4r");
+
+
     d3.select(id)
       .select("svg")
       .remove();
@@ -53,7 +50,6 @@ const RadarChart = {
     var g = d3
       .select(id)
       .append("svg")
-      //.attr("width", cfg.w + cfg.ExtraWidthX)
       .attr("width", 100 + "%")
       .attr("height", cfg.h + cfg.ExtraWidthY)
       .append("g")
@@ -61,6 +57,8 @@ const RadarChart = {
         "transform",
         "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")"
       );
+
+
     var tooltip;
 
     //Circular segments
@@ -188,6 +186,8 @@ const RadarChart = {
         );
       });
 
+
+
     d.forEach(function(y, x) {
       dataValues = [];
       g.selectAll(".nodes").data(y, function(j, i) {
@@ -240,6 +240,8 @@ const RadarChart = {
       series++;
     });
     series = 0;
+
+
 
     d.forEach(function(y, x) {
       g.selectAll(".nodes")
@@ -318,6 +320,8 @@ const RadarChart = {
 
       series++;
     });
+
+
     //Tooltip
     tooltip = g
       .append("text")
@@ -326,5 +330,3 @@ const RadarChart = {
       .style("font-size", "13px");
   }
 };
-
-module.exports.RadarChart = RadarChart;
