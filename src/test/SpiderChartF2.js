@@ -3,54 +3,49 @@ import { RadarChart2 } from "./RadarChart2";
 
 export const SpiderChartF2 = ({ data }) => {
 
-    const twoDimension = (data) => {
+    const twoDimension = ({ items, count }) => {
 
         let fieldRegistry = {};
         let chartData = [];
         let labels = [];
-        let matFunc ="count" //$scope.gadget.contentSettings.function;
+        let matFunc = "count" //$scope.gadget.contentSettings.function;
         let labelGetter;
         let maxValue = 0;
-        let allAxis = [];
 
+        items.forEach((obj) => {
+                obj?.items?.forEach((item) => {
 
-
-        data.items.forEach(function(obj) {
-            if (obj.items && obj.items.length) {
-                obj.items.forEach(function(item) {
-                    if (!fieldRegistry[item.id]) {
-                        fieldRegistry[item.name] = {}
+                    fieldRegistry[item.name] = {
+                        ...fieldRegistry[item.name],
+                        [obj.id]: item['count']
                     }
 
-                    fieldRegistry[item.name][obj.id] = item['count']
-                    maxValue = maxValue > item['count'] ? maxValue : item['count'];
-                    allAxis = [item.name, ...allAxis]
+                    maxValue = maxValue > item['count']
+                        ? maxValue
+                        : item['count'];
                 })
-            }
         });
 
-        allAxis = [...new Set(allAxis)]
-console.log('---------data---------', data)
-        data.items.forEach(function(obj) {
-            // var color = self.colors.find(obj.id);
+        items.forEach((obj) => {
             if (obj.items.length) {
-                var chartDataObj =
-                    {
+                let chartDataObj = {
                         'id': obj.id,
                         'label': labelGetter?.getValue(labels, obj.id, 'legend') || obj.name || "No value", ///obj.name,
                         'data': [],
                         'color': '#fff',//color && color.value || npsColorService.getColor(obj.type),
                         'forTooltip': matFunc + ': ' + obj[matFunc],
-                        'totalCount': data.count
+                        'totalCount': count
                     };
 
-                for (var item in fieldRegistry) {
-                    if (!fieldRegistry[item][obj.id]) {
-                        chartDataObj.data.push({'axis': item, value: 0})
-                    } else {
-                        chartDataObj.data.push({'axis': item, value: fieldRegistry[item][obj.id]})
-                    }
+                for (let item in fieldRegistry) {
+
+                    chartDataObj.data.push({
+                        'axis': item,
+                        value: !fieldRegistry[item][obj.id] ? 0 : fieldRegistry[item][obj.id]
+                    })
+
                 }
+
                 chartData.push(chartDataObj)
             }
         });
@@ -58,7 +53,7 @@ console.log('---------data---------', data)
         return {
             data: chartData,
             maxValue,
-            allAxis
+            allAxis: chartData[0].data.map(({axis}) => axis)
         }
 
 
