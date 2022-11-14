@@ -1,0 +1,240 @@
+{
+  "id": "root",
+  "name": "root",
+  "type": "mixed",
+  "count": 24,
+  "accSum": 24,
+  "level": 3,
+  "items": [
+    {
+      "id": "",
+      "name": "No value",
+      "type": "mixed",
+      "count": 4,
+      "accSum": 4,
+      "level": 2,
+      "items": [
+        {
+          "id": "",
+          "name": "No value",
+          "type": "mixed",
+          "count": 4,
+          "accSum": 4,
+          "level": 1,
+          "percent": 100
+        }
+      ],
+      "percent": 16.67
+    },
+    {
+      "id": "Billing",
+      "name": "Billing",
+      "type": "mixed",
+      "count": 2,
+      "accSum": 2,
+      "level": 2,
+      "items": [
+        {
+          "id": "2",
+          "name": "2",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 1,
+          "level": 1,
+          "percent": 50,
+          "sum": 2
+        },
+        {
+          "id": "b",
+          "name": "b",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 1,
+          "level": 1,
+          "percent": 50
+        }
+      ],
+      "percent": 8.33
+    },
+    {
+      "id": "Information",
+      "name": "Information",
+      "type": "mixed",
+      "count": 2,
+      "accSum": 2,
+      "level": 2,
+      "items": [
+        {
+          "id": "2",
+          "name": "2",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 2,
+          "level": 1,
+          "percent": 50,
+          "sum": 2
+        },
+        {
+          "id": "a",
+          "name": "a",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 1,
+          "level": 1,
+          "percent": 50
+        }
+      ],
+      "percent": 8.33
+    },
+    {
+      "id": "Support Analog",
+      "name": "Support Analog",
+      "type": "mixed",
+      "count": 2,
+      "accSum": 2,
+      "level": 2,
+      "items": [
+        {
+          "id": "5",
+          "name": "5",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 1,
+          "level": 1,
+          "percent": 50,
+          "sum": 5
+        },
+        {
+          "id": "a",
+          "name": "a",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 2,
+          "level": 1,
+          "percent": 50
+        }
+      ],
+      "percent": 8.33
+    },
+    {
+      "id": "Support App/Web",
+      "name": "Support App/Web",
+      "type": "mixed",
+      "count": 2,
+      "accSum": 2,
+      "level": 2,
+      "items": [
+        {
+          "id": "2",
+          "name": "2",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 3,
+          "level": 1,
+          "percent": 50,
+          "sum": 2
+        },
+        {
+          "id": "a",
+          "name": "a",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 3,
+          "level": 1,
+          "percent": 50
+        }
+      ],
+      "percent": 8.33
+    },
+    {
+      "id": "Support DTV",
+      "name": "Support DTV",
+      "type": "mixed",
+      "count": 4,
+      "accSum": 4,
+      "level": 2,
+      "items": [
+        {
+          "id": "4",
+          "name": "4",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 1,
+          "level": 1,
+          "percent": 25,
+          "sum": 4
+        },
+        {
+          "id": "5",
+          "name": "5",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 2,
+          "level": 1,
+          "percent": 25,
+          "sum": 5
+        },
+        {
+          "id": "a",
+          "name": "a",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 4,
+          "level": 1,
+          "percent": 25
+        },
+        {
+          "id": "b",
+          "name": "b",
+          "type": "mixed",
+          "count": 1,
+          "accSum": 2,
+          "level": 1,
+          "percent": 25
+        }
+      ],
+      "percent": 16.67
+    },
+    {
+      "id": "Support Internet",
+      "name": "Support Internet",
+      "type": "mixed",
+      "count": 8,
+      "accSum": 8,
+      "level": 2,
+      "items": [
+        {
+          "id": "1",
+          "name": "1",
+          "type": "mixed",
+          "count": 2,
+          "accSum": 2,
+          "level": 1,
+          "percent": 25,
+          "sum": 2
+        },
+        {
+          "id": "4",
+          "name": "4",
+          "type": "mixed",
+          "count": 2,
+          "accSum": 3,
+          "level": 1,
+          "percent": 25,
+          "sum": 8
+        },
+        {
+          "id": "a",
+          "name": "a",
+          "type": "mixed",
+          "count": 4,
+          "accSum": 8,
+          "level": 1,
+          "percent": 50
+        }
+      ],
+      "percent": 33.33
+    }
+  ],
+  "percent": 100
+}

@@ -36,34 +36,24 @@ export const RadarChart2 = ({ data, id }) => {
 
   const initChart = () => {
 
-      cfg.maxValue = Math.max(
-          cfg.maxValue,
-          d3.max(data, function(i) {
-              return d3.max(
-                  i.map(function(o) {
-                      return o.value;
-                  })
-              );
-          })
-      );
+      cfg.maxValue = 78.34
 
-      console.log('---------cfg.maxValue---------', cfg.maxValue)
 
-      var allAxis = data[0].map(function(i, j) {
-          return i.axis;
-      });
+      var allAxis = [
+          "Minutos por partido",
+          "Puntos por partido",
+          "T2P%",
+          "T3P%",
+          "TL%",
+          "eTC%",
+          "TS%"
+      ]
 
-      console.log('---------allAxis---------', allAxis)
 
       var total = allAxis.length;
       var radius = cfg.factor * Math.min(cfg.w / 2, cfg.h / 2);
       var Format = d3.format(".4r");
 
-      console.log('---------radius---------', radius)
-
-      d3.select(id)
-          .select("svg")
-          .remove();
 
       var g = d3
           .select(id)
@@ -206,7 +196,10 @@ export const RadarChart2 = ({ data, id }) => {
 
 
 
+      console.log('---------data---------', data)
       data.forEach(function(y, x) {
+          console.log('---------y---------', y)
+          debugger
           dataValues = [];
           g.selectAll(".nodes").data(y, function(j, i) {
               dataValues.push([
@@ -222,7 +215,9 @@ export const RadarChart2 = ({ data, id }) => {
                       Math.cos((i * cfg.radians) / total))
               ]);
           });
+
           dataValues.push(dataValues[0]);
+          console.log('---------dataValues---------', dataValues)
           g.selectAll(".area")
               .data([dataValues])
               .enter()
@@ -231,30 +226,31 @@ export const RadarChart2 = ({ data, id }) => {
               .style("stroke-width", "2px")
               .style("stroke", cfg.color(series))
               .attr("points", function(d) {
+                  console.log('---------d---------', d)
                   var str = "";
-                  for (var pti = 0; pti < d.length; pti++) {
-                      str = str + d[pti][0] + "," + d[pti][1] + " ";
-                  }
+                  // for (var pti = 0; pti < d.length; pti++) {
+                  //     str = str + d[pti][0] + "," + d[pti][1] + " ";
+                  // }
                   return str;
               })
               .style("fill", function(j, i) {
                   return cfg.color(series);
               })
               .style("fill-opacity", cfg.opacityArea)
-              .on("mouseover", function(d) {
-                  let z = "polygon." + d3.select(this).attr("class");
-                  g.selectAll("polygon")
-                      .transition(200)
-                      .style("fill-opacity", 0.1);
-                  g.selectAll(z)
-                      .transition(200)
-                      .style("fill-opacity", 0.7);
-              })
-              .on("mouseout", function() {
-                  g.selectAll("polygon")
-                      .transition(200)
-                      .style("fill-opacity", cfg.opacityArea);
-              });
+              // .on("mouseover", function(d) {
+              //     let z = "polygon." + d3.select(this).attr("class");
+              //     g.selectAll("polygon")
+              //         .transition(200)
+              //         .style("fill-opacity", 0.1);
+              //     g.selectAll(z)
+              //         .transition(200)
+              //         .style("fill-opacity", 0.7);
+              // })
+              // .on("mouseout", function() {
+              //     g.selectAll("polygon")
+              //         .transition(200)
+              //         .style("fill-opacity", cfg.opacityArea);
+              // });
           series++;
       });
       series = 0;
